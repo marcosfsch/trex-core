@@ -211,12 +211,14 @@ void DpdkTRexPortAttr::get_supported_speeds(supp_speeds_t &supp_speeds){
         supp_speeds.push_back(RTE_ETH_SPEED_NUM_100G);
     if (speed_capa & RTE_ETH_LINK_SPEED_200G)
         supp_speeds.push_back(RTE_ETH_SPEED_NUM_200G);
+    if (speed_capa & RTE_ETH_LINK_SPEED_400G)
+        supp_speeds.push_back(RTE_ETH_SPEED_NUM_400G);
 }
 
 void DpdkTRexPortAttr::update_link_status(){
     rte_eth_link_get(m_repid, &m_link);
-    if (m_link.link_speed > RTE_ETH_SPEED_NUM_200G ){
-        m_link.link_speed = RTE_ETH_SPEED_NUM_200G;
+    if (m_link.link_speed > RTE_ETH_SPEED_NUM_400G ){
+        m_link.link_speed = RTE_ETH_SPEED_NUM_400G;
     }
 }
 
